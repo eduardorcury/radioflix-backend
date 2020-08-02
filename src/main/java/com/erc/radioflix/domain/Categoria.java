@@ -1,6 +1,7 @@
 package com.erc.radioflix.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -24,11 +25,11 @@ public class Categoria {
 
     }
 
-    public Categoria(String id, String titulo, String descricao) {
+    public Categoria(String id, String titulo, String cor, String descricao) {
         this.id = id;
         this.titulo = titulo;
-        this.descricao = descricao;
         this.cor = cor;
+        this.descricao = descricao;
     }
 
     public String getId() {

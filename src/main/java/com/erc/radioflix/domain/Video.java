@@ -13,13 +13,13 @@ public class Video {
 
     private String url;
 
-    private Categoria categoria;
+    private String categoria;
 
     public Video() {
 
     }
 
-    public Video(String id, String titulo, String url, Categoria categoria) {
+    public Video(String id, String titulo, String url, String categoria) {
         this.id = id;
         this.titulo = titulo;
         this.url = url;
@@ -50,11 +50,11 @@ public class Video {
         this.url = url;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 }

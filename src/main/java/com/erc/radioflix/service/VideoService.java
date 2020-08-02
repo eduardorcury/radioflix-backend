@@ -1,11 +1,12 @@
 package com.erc.radioflix.service;
 
+import com.erc.radioflix.domain.Categoria;
 import com.erc.radioflix.domain.Video;
+import com.erc.radioflix.repository.CategoriaRepository;
 import com.erc.radioflix.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,9 @@ public class VideoService {
 
     @Autowired
     private VideoRepository videoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public List<Video> findAll() {
         return videoRepository.findAll();
@@ -25,6 +29,9 @@ public class VideoService {
     }
 
     public Video insert(Video video) {
+
+        Categoria categoria = categoriaRepository.findByTitulo(video.getCategoria());
+        categoria.getVideos().add(video);
         return videoRepository.insert(video);
     }
 
