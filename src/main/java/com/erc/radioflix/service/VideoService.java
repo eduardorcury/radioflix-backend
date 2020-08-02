@@ -32,6 +32,7 @@ public class VideoService {
 
         Categoria categoria = categoriaRepository.findByTitulo(video.getCategoria());
         categoria.getVideos().add(video);
+        categoriaRepository.save(categoria);
         return videoRepository.insert(video);
     }
 
