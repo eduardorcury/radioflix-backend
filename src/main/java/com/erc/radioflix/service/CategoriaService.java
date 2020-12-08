@@ -18,13 +18,13 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
-    public Categoria findById(String id) {
+    public Categoria findById(int id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
         return categoria.orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
     }
 
     public Categoria insert(Categoria categoria) {
-        return categoriaRepository.insert(categoria);
+        return categoriaRepository.save(categoria);
     }
 
 }

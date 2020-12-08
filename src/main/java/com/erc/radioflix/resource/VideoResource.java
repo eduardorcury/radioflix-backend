@@ -25,7 +25,7 @@ public class VideoResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Video> findById(@PathVariable String id) {
+    public ResponseEntity<Video> findById(@PathVariable int id) {
         Video video = videoService.findById(id);
         return ResponseEntity.ok(video);
     }
