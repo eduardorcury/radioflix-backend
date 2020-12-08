@@ -1,13 +1,11 @@
 package com.erc.radioflix.repository;
 
 import com.erc.radioflix.domain.Categoria;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface CategoriaRepository extends MongoRepository<Categoria, String> {
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
 
     Categoria findByTitulo(String titulo);
 }

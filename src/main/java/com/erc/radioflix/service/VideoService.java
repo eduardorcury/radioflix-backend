@@ -23,17 +23,17 @@ public class VideoService {
         return videoRepository.findAll();
     }
 
-    public Video findById(String id) {
+    public Video findById(int id) {
         Optional<Video> video = videoRepository.findById(id);
         return video.orElseThrow(() -> new RuntimeException("Vídeo não encontrado"));
     }
 
     public Video insert(Video video) {
 
-        Categoria categoria = categoriaRepository.findByTitulo(video.getCategoria());
+        Categoria categoria = categoriaRepository.findByTitulo(video.getCategoria().getTitulo());
         categoria.getVideos().add(video);
         categoriaRepository.save(categoria);
-        return videoRepository.insert(video);
+        return videoRepository.save(video);
     }
 
 }

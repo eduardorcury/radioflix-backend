@@ -1,36 +1,40 @@
 package com.erc.radioflix.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Document(collection = "video")
+import javax.persistence.*;
+
+@Entity
 public class Video {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String titulo;
 
     private String url;
 
-    private String categoria;
+    @JsonIgnore
+    @ManyToOne
+    private Categoria categoria;
 
     public Video() {
 
     }
 
-    public Video(String id, String titulo, String url, String categoria) {
+    public Video(int id, String titulo, String url, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.url = url;
         this.categoria = categoria;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,11 +54,12 @@ public class Video {
         this.url = url;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
 }

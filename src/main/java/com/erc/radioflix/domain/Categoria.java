@@ -1,17 +1,15 @@
 package com.erc.radioflix.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "categoria")
+@Entity
 public class Categoria {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String titulo;
 
@@ -19,24 +17,26 @@ public class Categoria {
 
     private String descricao;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "categoria_id")
     private List<Video> videos = new ArrayList<>();
 
     public Categoria() {
 
     }
 
-    public Categoria(String id, String titulo, String cor, String descricao) {
+    public Categoria(int id, String titulo, String cor, String descricao) {
         this.id = id;
         this.titulo = titulo;
         this.cor = cor;
         this.descricao = descricao;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
